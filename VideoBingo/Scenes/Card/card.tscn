@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciagebjei6tpc"]
+
+[ext_resource type="Script" path="res://Scripts/bingo_card.gd" id="1_x0mks"]
+[ext_resource type="Texture2D" uid="uid://c65rmb3y2o888" path="res://Sprites/rounded_square.svg" id="2_bl7jg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2r8m"]
+
+[node name="Card" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v2r8m")
+script = ExtResource("1_x0mks")
+
+[node name="CardBackground" type="NinePatchRect" parent="."]
+self_modulate = Color(0.194349, 0.194349, 0.194349, 1)
+layout_mode = 2
+texture = ExtResource("2_bl7jg")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="GridMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="CardGrid" type="GridContainer" parent="GridMarginContainer"]
+layout_mode = 2
+columns = 3

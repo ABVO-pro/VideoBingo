@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpcyujlhujm8q"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_s0fvj"]
+[ext_resource type="PackedScene" uid="uid://xs31jgbuy4sm" path="res://Scenes/video_bingo.tscn" id="2_ffnse"]
+[ext_resource type="Script" path="res://Scripts/DataTypes/int_range.gd" id="3_3ossu"]
+[ext_resource type="Script" path="res://Scripts/prize_manager.gd" id="4_5c1ag"]
+[ext_resource type="AudioStream" uid="uid://7cij55tyhamm" path="res://Sounds/correct_ball_drawn.wav" id="5_nl3xu"]
+[ext_resource type="AudioStream" uid="uid://2akmel77tekn" path="res://Sounds/wrong_ball_drawn.wav" id="6_58d5m"]
+
+[sub_resource type="Resource" id="Resource_1ijq8"]
+script = ExtResource("3_3ossu")
+min_value = 1
+max_value = 60
+
+[node name="Main" type="Node"]
+
+[node name="VideoBingo" parent="." instance=ExtResource("2_ffnse")]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_s0fvj")
+my_range = SubResource("Resource_1ijq8")
+
+[node name="PrizeManager" type="Node" parent="."]
+script = ExtResource("4_5c1ag")
+
+[node name="CorrectBallSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nl3xu")
+
+[node name="WrongBallSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_58d5m")

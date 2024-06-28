@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://xs31jgbuy4sm"]
+
+[ext_resource type="Texture2D" uid="uid://rxwme03an8qt" path="res://Sprites/background.png" id="1_s8ghk"]
+[ext_resource type="Texture2D" uid="uid://ckug4n4tbq16y" path="res://Sprites/btn.png" id="2_eshn2"]
+[ext_resource type="Texture2D" uid="uid://b0mvs8stmjo2a" path="res://Sprites/btn_pressed.png" id="3_ibvaq"]
+[ext_resource type="PackedScene" uid="uid://bkpl434124j83" path="res://Scenes/ball_drawer.tscn" id="4_n86be"]
+[ext_resource type="PackedScene" uid="uid://ciagebjei6tpc" path="res://Scenes/Card/card.tscn" id="5_h6e5q"]
+[ext_resource type="Texture2D" uid="uid://c65rmb3y2o888" path="res://Sprites/rounded_square.svg" id="6_17pgf"]
+[ext_resource type="Script" path="res://Scripts/prizes_container.gd" id="6_axm3m"]
+[ext_resource type="PackedScene" uid="uid://deuhllfimd3fo" path="res://Scenes/Prizes/prize_slot.tscn" id="6_t7knj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_konyy"]
+
+[node name="VideoBingo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s8ghk")
+expand_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -131.0
+offset_right = 75.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_eshn2")
+texture_pressed = ExtResource("3_ibvaq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ScreenContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 44.0
+offset_right = 1110.0
+offset_bottom = 456.0
+
+[node name="BallDrawer" parent="ScreenContainer" instance=ExtResource("4_n86be")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardContainer" type="CenterContainer" parent="ScreenContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Card" parent="ScreenContainer/HBoxContainer/CardContainer" instance=ExtResource("5_h6e5q")]
+layout_mode = 2
+card_size = 2
+
+[node name="PrizesContainer" type="CenterContainer" parent="ScreenContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="ScreenContainer/HBoxContainer/PrizesContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_konyy")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2"]
+self_modulate = Color(0.196078, 0.196078, 0.196078, 1)
+layout_mode = 2
+texture = ExtResource("6_17pgf")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="PanelContainer" type="MarginContainer" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PrizeGrid" type="GridContainer" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+script = ExtResource("6_axm3m")
+
+[node name="RowPrizeSlot" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2/PanelContainer/PrizeGrid" instance=ExtResource("6_t7knj")]
+layout_mode = 2
+
+[node name="ColumnPrizeSlot" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2/PanelContainer/PrizeGrid" instance=ExtResource("6_t7knj")]
+layout_mode = 2
+
+[node name="CornerPrizeSlot" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2/PanelContainer/PrizeGrid" instance=ExtResource("6_t7knj")]
+layout_mode = 2
+
+[node name="BingoPrizeSlot" parent="ScreenContainer/HBoxContainer/PrizesContainer/PanelContainer2/PanelContainer/PrizeGrid" instance=ExtResource("6_t7knj")]
+layout_mode = 2
+
+[node name="ScoreTexture" type="NinePatchRect" parent="."]
+self_modulate = Color(0.404511, 0.404511, 0.404511, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -100.0
+offset_right = 246.0
+offset_bottom = -60.0
+grow_vertical = 0
+texture = ExtResource("6_17pgf")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="ScoreContainer" type="MarginContainer" parent="ScoreTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="ScoreLabel" type="Label" parent="ScoreTexture/ScoreContainer"]
+layout_mode = 2
+text = "Score: 0"

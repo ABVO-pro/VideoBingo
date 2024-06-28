@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://deuhllfimd3fo"]
+
+[ext_resource type="Texture2D" uid="uid://c65rmb3y2o888" path="res://Sprites/rounded_square.svg" id="1_5ck3y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rlrd"]
+texture = ExtResource("1_5ck3y")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[node name="PrizeBGTexture" type="PanelContainer"]
+offset_right = 38.0
+offset_bottom = 37.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5rlrd")
+
+[node name="PrizeSlotContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PrizeVContainer" type="VBoxContainer" parent="PrizeSlotContainer"]
+layout_mode = 2
+
+[node name="PatternGrid" type="GridContainer" parent="PrizeSlotContainer/PrizeVContainer"]
+layout_mode = 2
+
+[node name="PrizeLabel" type="Label" parent="PrizeSlotContainer/PrizeVContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1

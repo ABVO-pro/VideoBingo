@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jeuvrdq6eagt"]
+
+[ext_resource type="Texture2D" uid="uid://ckvuwy3ufuqqr" path="res://Sprites/circle.svg" id="1_qx3ma"]
+
+[node name="Prize Pattern Circle" type="TextureRect"]
+custom_minimum_size = Vector2(12, 12)
+texture = ExtResource("1_qx3ma")
+expand_mode = 2

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1w0n37lvcwir"]
+
+[ext_resource type="Texture2D" uid="uid://c65rmb3y2o888" path="res://Sprites/rounded_square.svg" id="1_wewtj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gtim7"]
+
+[node name="CardSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 30)
+offset_right = 35.0
+offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gtim7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_wewtj")
+expand_mode = 3
+
+[node name="CardLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "000"
+horizontal_alignment = 1
